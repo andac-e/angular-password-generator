@@ -72,15 +72,20 @@
         </div>
       </div>
       <!-- Generate Button -->
-      <div class="pt-3 pb-4">
+      <div class="pt-3 pb-4 d-flex align-items-center justify-content-center">
         <button
-          pButton
           type="button"
-          label="GENERATE"
-          class="p-button-success w-full font-light"
+          class="generate-btn w-full font-light text-center"
           (click)="generatePassword()"
           [disabled]="selectedValues.length === 0"
-        ></button>
+        >
+          <div class="mx-auto" *ngIf="!loading; else loaderTemplate">
+            Generate
+          </div>
+          <ng-template #loaderTemplate>
+            <div class="loader mt-2"></div>
+          </ng-template>
+        </button>
       </div>
     </div>
   </div>
